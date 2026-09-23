@@ -1,0 +1,26 @@
+---
+title: "Mallard Duck Movement"
+author: "GitHub Copilot"
+format: html
+---
+
+This page documents mallard duck movement over time.
+
+```{r}
+library(ggplot2)
+
+duck_data <- data.frame(
+  day = 1:5,
+  ducks = c(12, 18, 25, 20, 31)
+)
+
+ggplot(duck_data, aes(day, ducks)) +
+  geom_line(color = "#2b7a78") +
+  geom_point(size = 3, color = "#2b7a78") +
+  labs(
+    title = "Mallard Duck Counts",
+    x = "Day",
+    y = "Number of ducks"
+  ) +
+  theme_minimal()
+```
