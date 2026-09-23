@@ -1,0 +1,39 @@
+---
+title: "Mallard Duck Movement"
+author: "GitHub Copilot"
+format: html
+execute:
+  echo: false
+---
+
+This page documents mallard duck movement over time.
+
+```{r}
+#| message: false
+library(tidyverse)
+library(sf)
+```
+
+```{r}
+#| cache: true
+mallards <- readRDS("data/mallards.rds")
+```
+
+```{r}
+world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+
+mallards |>
+  filter(lat >= 46, lat <= 55, long >= 7, long <= 25) |>
+  st_as_sf(coords = c("long", "lat"), crs = 4326) |>
+  ggplot() +
+  geom_sf(data = world, fill = "#f0f0f0", color = "#888888") +
+  geom_sf(aes(color = duck_id), size = 0.5, alpha = 0.7) +
+  coord_sf(xlim = c(7, 25), ylim = c(46, 55)) +
+  labs(
+    title = "Mallard GPS fixes",
+    color = "Duck",
+    x = "Longitude",
+    y = "Latitude"
+  ) +
+  theme_minimal()
+```

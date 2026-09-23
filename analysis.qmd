@@ -2,9 +2,17 @@
 title: "Mallard Duck Movement"
 author: "GitHub Copilot"
 format: html
+execute:
+  echo: false
 ---
 
 This page documents mallard duck movement over time.
+
+```{r}
+#| message: false
+library(tidyverse)
+library(sf)
+```
 
 ```{r}
 library(ggplot2)
@@ -23,4 +31,31 @@ ggplot(duck_data, aes(day, ducks)) +
     y = "Number of ducks"
   ) +
   theme_minimal()
+```
+
+```{r}
+mallards <- read_csv("data/mallards.csv")
+
+head(mallards, 10)
+```
+
+```{r}
+mallards |>
+  count(duck_id) |>
+  arrange(desc(n))
+```
+
+```{r}
+mallards |>
+  summarise(
+    min_lat = min(lat),
+    max_lat = max(lat),
+    min_lon = min(long),
+    max_lon = max(long)
+  )
+```
+
+```{r}
+#| cache: true
+mallards <- readRDS("data/mallards.rds")
 ```
