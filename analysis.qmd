@@ -6,7 +6,15 @@ execute:
   echo: false
 ---
 
-This page documents mallard duck movement over time.
+Mallard ducks are familiar dabbling ducks found across Europe and North America, often seen on lakes, rivers, and wetlands. Their broad diet, adaptable habits, and conspicuous plumage make them a classic example of a highly mobile waterfowl species.
+
+Lake Constance, on the border of Germany, Switzerland, and Austria, is one of Europe’s largest freshwater lakes and an important stopover for migratory birds. The lake and surrounding wetlands provide feeding and resting habitat for many ducks during breeding and wintering seasons.
+
+The GPS tracking data used here follows individual mallards as they move through this region, revealing patterns of daily movement, seasonal behavior, and the geographic range of the birds across the study area.
+
+<div style="display: flex; justify-content: center;">
+  <img src="images/mallard.jpg" style="height: 300px; width: auto;"/>
+</div>
 
 ```{r}
 #| message: false
