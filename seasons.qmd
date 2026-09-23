@@ -1,0 +1,34 @@
+---
+title: "Mallard Duck Movement"
+author: "GitHub Copilot"
+format: html
+execute:
+  echo: false
+---
+
+This page documents mallard duck movement over time.
+
+```{r}
+#| message: false
+library(tidyverse)
+library(sf)
+```
+
+```{r}
+#| cache: true
+mallards <- readRDS("data/mallards.rds")
+```
+
+```{r}
+mallards |>
+  count(month, name = "fixes") |>
+  arrange(month)
+```
+
+```{r}
+mallards |>
+  filter(speed <= 30) |>
+  group_by(season, month) |>
+  summarise(mean_speed = mean(speed, na.rm = TRUE), .groups = "drop") |>
+  arrange(season, month)
+```
